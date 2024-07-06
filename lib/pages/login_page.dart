@@ -29,6 +29,7 @@ class _LoginPageState extends State<LoginPage> {
                   const Text('Digite seu email: '),
                   TextField(
                     controller: _email,
+                    textCapitalization: TextCapitalization.none,
                   )
                 ]
               ),
