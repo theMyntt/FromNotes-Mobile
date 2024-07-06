@@ -8,6 +8,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _password = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,18 +23,22 @@ class _LoginPageState extends State<LoginPage> {
           child: Wrap(
             runSpacing: 20.0,
             children: [
-              const Column(
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Digite seu email: '),
-                  TextField()
+                  const Text('Digite seu email: '),
+                  TextField(
+                    controller: _email,
+                  )
                 ]
               ),
-              const Column(
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Digite sua senha: '),
-                  TextField()
+                  const Text('Digite sua senha: '),
+                  TextField(
+                    controller: _password
+                  )
                 ],
               ),
               SizedBox(
