@@ -15,10 +15,10 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Faça login para continuar!'),
+        title: const Text('Faça login para continuar!'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(40.0),
+        padding: const EdgeInsets.all(40.0),
         child: Center(
           child: Wrap(
             runSpacing: 20.0,
@@ -44,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               SizedBox(
                 width: double.infinity,
-                child: TextButton(onPressed: () {}, child: Text('Fazer login')),
+                child: TextButton(onPressed: () {}, child: const Text('Fazer login')),
               )
             ],
           ),
