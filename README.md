@@ -1,16 +1,22 @@
-# fromnotes_mobile
+# FromNotes Mobile
 
-A new Flutter project.
+- A mobile application made with Flutter for FromNotes system
+- A FromHel Studio intranet application
 
-## Getting Started
+<div style="display: flex; gap: 5px">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg" width="48px"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg" width="48px"/>
+</div>
 
-This project is a starting point for a Flutter application.
+## Pre-requirements
 
-A few resources to get you started if this is your first Flutter project:
+- Flutter
+- [FromNotes API](https://github.com/theMyntt/FromNotes-API)
+- Android or iOS device
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Development use
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Clone this repo
+- Install the dependencies with `flutter pub get`
+- Configure your enviroment variables like in `env.example.json`
+- Initialize application with `flutter run --dart-define-from-file=<your-env-file>.json`
