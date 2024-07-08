@@ -40,9 +40,7 @@ class _LoginPageState extends State<LoginPage> {
       prefs.setString('name', jsonResponse['name']);
       prefs.setString('token', jsonResponse['id']);
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Logado')),
-      );
+      Navigator.pushNamed(context, '/home');
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Erro durante o login')),
