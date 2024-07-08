@@ -1,4 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:fromnotes_mobile/config/env.dart';
+import 'package:http/http.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -10,6 +15,40 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
+
+  final env = Env();
+
+  Future<void> makeLogin(BuildContext context) async {
+    final apiUrl = env.apiUrl;
+
+    try {
+      var response = await post(Uri.parse("$apiUrl/v1/user/sync-out"), body: {
+        'email': _email.text.toString(),
+        'password': _password.text.toString()
+      });
+
+      if (response.statusCode != 201) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Usuário não encontrado')),
+        );
+        return;
+      }
+
+      Map<String, dynamic> jsonResponse = jsonDecode(response.body);
+
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setString('name', jsonResponse['name']);
+      prefs.setString('token', jsonResponse['id']);
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Logado')),
+      );
+    } catch(e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Erro durante o login')),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +83,9 @@ class _LoginPageState extends State<LoginPage> {
               ),
               SizedBox(
                 width: double.infinity,
-                child: TextButton(onPressed: () {}, child: const Text('Fazer login')),
+                child: TextButton(
+                    onPressed: () => makeLogin(context),
+                    child: const Text('Fazer login')),
               )
             ],
           ),
