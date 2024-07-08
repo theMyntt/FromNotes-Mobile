@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fromnotes_mobile/pages/home/home_page.dart';
 import 'package:fromnotes_mobile/pages/login/login_page.dart';
 
 void main() {
@@ -19,7 +20,10 @@ class _AppState extends State<App> {
       theme:
           ThemeData(useMaterial3: true, colorScheme: const ColorScheme.dark()),
       initialRoute: '/',
-      routes: {'/': (context) => const LoginPage()},
+      routes: {
+        '/': (context) => const LoginPage(),
+        '/home': (context) => const HomePage()
+      },
     );
   }
 }
