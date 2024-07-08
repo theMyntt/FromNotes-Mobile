@@ -43,7 +43,7 @@ class _LoginPageState extends State<LoginPage> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Logado')),
       );
-    } catch(e) {
+    } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Erro durante o login')),
       );
@@ -62,22 +62,24 @@ class _LoginPageState extends State<LoginPage> {
           child: Wrap(
             runSpacing: 20.0,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text('Digite seu email: '),
-                  TextField(
-                    controller: _email,
-                    textCapitalization: TextCapitalization.none,
-                  )
-                ]
-              ),
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                const Text('Digite seu email: '),
+                TextField(
+                  controller: _email,
+                  textCapitalization: TextCapitalization.none,
+                  autocorrect: false,
+                  enableSuggestions: false,
+                )
+              ]),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text('Digite sua senha: '),
                   TextField(
-                    controller: _password
+                    controller: _password,
+                    obscureText: true,
+                    enableSuggestions: false,
+                    autocorrect: false,
                   )
                 ],
               ),
